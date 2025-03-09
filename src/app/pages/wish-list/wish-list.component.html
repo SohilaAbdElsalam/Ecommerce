@@ -1,0 +1,26 @@
+<section class="main-sec w-[75%] mx-auto">
+    <h1 class="text-center text-3xl text-main">shop cart</h1>
+    <div class="flex items-center justify-between">
+        <span class="text-main">total cart price : {{wishListDetails.totalCartPrice|currency:'GBP'}}</span>
+         <button (click)="clearItme()" class="bg-main border rounded text-xs px-10 py-1 text-white">Clear cart</button>
+    </div>
+     @for (produ of wishListDetails.products; track produ.products) {
+        <div class="grid md:grid-cols-[10%_minmax(0,1fr)] border-b mb-2">
+            <div>
+                <img [src]="produ.products.imgeCover" class="w-full h-[100px]" [alt]="produ.products.title">
+            </div>
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3>{{produ.products.title}}</h3>
+                    <h4>price : {{produ.price|currency:'GBP'}}</h4>
+                    <button (click)="removeItme(produ.products.id)"><i class="fas fa-trash-can text-main"> remove</i></button>
+                </div>
+               
+            </div>
+         </div>
+     }
+    
+
+
+
+</section>

@@ -1,0 +1,17 @@
+<section>
+    <h2 class="text-4xl my-2"> Popular categorice</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (categorice of categorice.slice(0,12) ; track categorice.id){
+            <div class="card  border border-main rounded-md overflow-hidden shadow relative" >
+                <div class="card-img">
+                    <img [src]="categorice.imageCover" class="w-full h-[250px] object-contain"  [alt]="categorice.title"/>
+                </div>
+                <div class="card-body px-2 py-4">
+                    <h4 class="text-main text-xs">{{categorice.category.name}}</h4>
+                </div>
+            </div>
+
+        }
+    </div>
+    
+</section>

@@ -1,0 +1,63 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="max-w-md mx-auto">
+    @if (apiError) {
+        <div class="flex p-4 mb-4  text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+         {{apiError}}
+        </div>
+    }
+
+   
+    <div formControlName="password" class="relative z-0 w-full my-5 group">
+        <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User Password</label>
+        
+
+
+        @if (loginForm.get("password")?.errors && loginForm.get('password')?.touched) {
+            <div class="flex p-4 mb-4  text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        
+                <div class="mt-2">
+                  <span class="font-medium">Ensure that these requirements are met:</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (loginForm.get("password")?.getError('required')) {
+                            <li>password is required</li>
+                        }@else if (loginForm.get("password")?.getError('pattern')) {
+                            <li>invalid pattern</li>
+                        }
+                        
+                  </ul>
+                </div>
+              </div>
+        }
+    
+    </div>
+  
+    <div formControlName="email" class="relative z-0 w-full my-5 group">
+        <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User Email</label>
+             
+        @if (loginForm.get("email")?.errors && loginForm.get('email')?.touched) {
+            <div class="flex p-4 mb-4  text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        
+                <div class="mt-2">
+                  <span class="font-medium">Ensure that these requirements are met:</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (loginForm.get("email")?.getError('required')) {
+                            <li>email is required</li>
+                        }@else if (loginForm.get("email")?.getError('pattern')) {
+                            <li>invalid pattern</li>
+                        }
+                        
+                  </ul>
+                </div>
+              </div>
+        }
+        
+  
+  
+    </div>
+   
+    <a routerLink="/forgotpassword" class="flex link-primary" >forgotpassword </a>
+
+   
+    <button type="submit" class="text-white bg-main my-5 opacity-80 hover:bg-main- focus:ring-4 focus:outline-none focus:ring-main  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main">Log In</button>
+  </form>
